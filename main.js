@@ -1,18 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ── THEME (init before anything renders) ──────────────
+    const savedTheme = localStorage.getItem('bky-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+
+    // Inject toggle button into every nav-right-group on the page
+    document.querySelectorAll('.nav-right-group').forEach(group => {
+        if (group.querySelector('.theme-toggle')) return; // avoid duplicates
+        const btn = document.createElement('button');
+        btn.className = 'theme-toggle';
+        btn.setAttribute('aria-label', 'Toggle dark / light mode');
+        btn.title = 'Toggle dark / light mode';
+        btn.addEventListener('click', () => {
+            const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('bky-theme', next);
+        });
+        // Insert as first child so it appears leftmost in the right group
+        group.insertBefore(btn, group.firstChild);
+    });
+
     // 1. Copy Email Function (Universal)
     // ----------------------------------
-    // Attaches to any element with onclick="copyEmail()" or class "copy-email-btn"
     window.copyEmail = function () {
         const email = 'bekyoverse@gmail.com';
         navigator.clipboard.writeText(email).then(() => {
             const toast = document.getElementById('copyToast');
             if (toast) {
-                toast.innerText = 'Email copied ✓'; // Update text dynamically
+                toast.innerText = 'Email copied ✓';
                 toast.classList.add('show');
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 2000);
+                setTimeout(() => toast.classList.remove('show'), 2000);
             }
         }).catch(err => {
             console.error('Failed to copy email: ', err);
@@ -31,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Scroll Animations (Universal)
     // --------------------------------
-    // Animates elements with .fade-in class (and others if needed)
     const animatedElements = document.querySelectorAll('.fade-in, .package-card, .category-section');
 
     if (animatedElements.length > 0) {
@@ -44,16 +60,13 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // For elements relying on inline JS styles previously (backward compatibility if needed)
                     entry.target.style.opacity = '';
                     entry.target.style.transform = '';
                 }
             });
         }, observerOptions);
 
-        animatedElements.forEach(el => {
-            observer.observe(el);
-        });
+        animatedElements.forEach(el => observer.observe(el));
     }
 
     // 4. Index Page Specific Logic: Sticky Nav & Logo
@@ -62,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const stickyNav = document.querySelector('.nav-wrapper nav');
     const heroSection = document.querySelector('.hero');
 
-    // Only run if these elements exist (mostly index.html)
     if (homeLogo && stickyNav && heroSection) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > heroSection.offsetHeight - 100) {
@@ -93,14 +105,13 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', () => {
                 const selectedLang = btn.dataset.lang;
                 localStorage.setItem('language', selectedLang);
-
-                // Update UI state
                 langButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
             });
         });
     }
-    // 6. 3D Head Interactivity removed - reverted to CSS float animation as per user request
+
+    // 6. 3D Head Interactivity removed — CSS float animation kept
 
     // 7. Mobile Tap-to-Reveal for Service Cards
     // ------------------------------------------
@@ -108,27 +119,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     serviceCards.forEach(card => {
         card.addEventListener('click', function (e) {
-            // Only apply this logic on mobile screens
             if (window.innerWidth <= 768) {
                 if (!this.classList.contains('mobile-active')) {
-                    // Prevent navigation on first tap
                     e.preventDefault();
-
-                    // Remove active class from all other cards
                     serviceCards.forEach(c => c.classList.remove('mobile-active'));
-
-                    // Add active class to this card
                     this.classList.add('mobile-active');
                 }
-                // Second tap will naturally follow the link because class is now present
             }
         });
     });
 
-    // Close overlays when tapping elsewhere
     document.addEventListener('click', function (e) {
         if (!e.target.closest('.service-card')) {
             serviceCards.forEach(card => card.classList.remove('mobile-active'));
         }
     });
+
 });
