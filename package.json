@@ -1,0 +1,13 @@
+{
+  "name": "bekyoverse-web",
+  "version": "1.0.0",
+  "description": "BEKYOVerse Static Website",
+  "scripts": {
+    "dev": "npx -y serve .",
+    "start": "npx -y serve .",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

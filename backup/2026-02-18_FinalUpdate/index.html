@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEKYOVerse - Creative Animation Studio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Fredoka:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- SEO & Social Sharing -->
+    <meta name="description"
+        content="BEKYOVerse - Creative Animator & Illustrator from Myanmar. Specializing in 2D animation, character design, and comic art.">
+    <meta property="og:title" content="BEKYOVerse - Creative Animation Studio">
+    <meta property="og:description"
+        content="Bringing your ideas to life through movement and art. Explore our animation, mascot design, and comic gallery.">
+    <meta property="og:image" content="https://2-bekyov--erse-web.vercel.app/AI%203D%20Head.png">
+    <meta property="og:url" content="https://2-bekyov--erse-web.vercel.app/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <!-- Navigation (Moved to top level for correct layering) -->
+    <div class="nav-wrapper">
+        <a href="#hero" class="home-logo" id="homeLogo">
+            <img src="AI 3D Head.png" alt="Bekyo 3D Head">
+            <span>BEKYOVerse</span>
+        </a>
+        <div class="mobile-menu-btn" onclick="document.querySelector('nav').classList.toggle('mobile-active')">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#comics">Comics</a>
+            <a href="#about">About</a>
+            <div class="nav-item">
+                <a href="pricing.html">Pricing</a>
+                <div class="dropdown-content">
+                    <a href="pricing.html#mascot"><i class="fas fa-mask"></i> Mascot</a>
+                    <a href="pricing.html#stickers"><i class="fas fa-sticky-note"></i> Stickers</a>
+                    <a href="pricing.html#illustration"><i class="fas fa-palette"></i> Illustration</a>
+                    <a href="pricing.html#comic"><i class="fas fa-book-open"></i> Comic</a>
+                    <a href="pricing.html#animation"><i class="fas fa-film"></i> Animation</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#contact">Contact</a>
+                <div class="dropdown-content">
+                    <a href="https://t.me/bekyoverse_bot" target="_blank"><i class="fab fa-telegram-plane"></i>
+                        Telegram</a>
+                    <a href="https://m.me/bekyoverse" target="_blank"><i class="fab fa-facebook-messenger"></i>
+                        Messenger</a>
+                    <a href="https://www.instagram.com/bekyoverse/" target="_blank"><i class="fab fa-instagram"></i>
+                        Instagram</a>
+                    <a href="https://www.facebook.com/bekyoverse" target="_blank"><i class="fab fa-facebook-f"></i>
+                        Facebook</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero home-hero" id="hero">
+        <!-- Video Background Loop (MOVED INSIDE HERO) -->
+        <video autoplay loop muted playsinline class="bg-video">
+            <source src="background-loop.mp4" type="video/mp4">
+        </video>
+        <!-- Dark Overlay for Hero only -->
+        <div class="bg-overlay"></div>
+
+
+
+
+
+        <div class="hero-content">
+            <img src="AI 3D Head.png" alt="AI 3D Head" class="hero-3d-head">
+            <h1 class="hero-title">BEKYOVerse</h1>
+            <p class="hero-subtitle">Creative Animator & Illustrator</p>
+            <p class="hero-tagline">Where imagination meets strategy. I create comics, animations, and character designs
+                that tell stories.</p>
+            <a href="#services" class="hero-cta">Start a Project</a>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="about-section fade-in">
+        <div class="about-image-container">
+            <img src="about me/Profile_Picture_2025_August.png" alt="Bekyo Mascot" class="about-image image-cartoon">
+            <img src="about me/482705559_18320704156166815_9082717179843693102_n.jpg" alt="Bekyo Face"
+                class="about-image image-human">
+        </div>
+        <div class="about-content">
+            <h2 class="about-title">About Me</h2>
+            <p class="about-text">
+                I’m a freelance animator and illustrator working under the name <strong>BEKYOVerse</strong>.
+                I create character-driven visuals through animation, illustration, and comics for both personal stories
+                and brand projects.
+                I’ve worked with local and international clients across Myanmar, Thailand, and beyond, delivering
+                projects independently and through collaborations.
+            </p>
+            <div class="about-stats">
+                <div class="stat-item">
+                    <span class="stat-val">100+</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-val">50+</span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-val">5+</span>
+                    <span class="stat-label">Years Exp.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <h2 class="section-title fade-in">What I Do</h2>
+        <div class="services-grid">
+            <a href="pricing.html#animation" class="service-card fade-in">
+                <div class="service-overlay">
+                    <div class="overlay-text">
+                        <i class="fas fa-film"></i>
+                        View Pricing & Details
+                    </div>
+                </div>
+                <img src="5_ Animation.png" alt="Animation" class="service-img">
+            </a>
+            <a href="pricing.html#illustration" class="service-card fade-in">
+                <div class="service-overlay">
+                    <div class="overlay-text">
+                        <i class="fas fa-palette"></i>
+                        View Pricing & Details
+                    </div>
+                </div>
+                <img src="4_ Illustration.png" alt="Illustration" class="service-img">
+            </a>
+            <a href="pricing.html#comic" class="service-card fade-in">
+                <div class="service-overlay">
+                    <div class="overlay-text">
+                        <i class="fas fa-book-open"></i>
+                        View Pricing & Details
+                    </div>
+                </div>
+                <img src="3_ Comics.png" alt="Comics" class="service-img">
+            </a>
+            <a href="pricing.html#mascot" class="service-card fade-in">
+                <div class="service-overlay">
+                    <div class="overlay-text">
+                        <i class="fas fa-mask"></i>
+                        View Pricing & Details
+                    </div>
+                </div>
+                <img src="2_ Mascot.png" alt="Mascot" class="service-img">
+            </a>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
+        <h2 class="section-title fade-in">Featured Work</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item fade-in">
+                <iframe src="https://www.youtube.com/embed/LOUotNawNc0" allowfullscreen></iframe>
+            </div>
+            <div class="portfolio-item fade-in">
+                <iframe src="https://www.youtube.com/embed/B5TgnNlpBiM" allowfullscreen></iframe>
+            </div>
+            <div class="portfolio-item fade-in">
+                <iframe src="https://www.youtube.com/embed/Fdh2RbLR7iY" allowfullscreen></iframe>
+            </div>
+            <div class="portfolio-item fade-in">
+                <iframe src="https://www.youtube.com/embed/hLuU60P2SYY" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comics Marquee -->
+    <section id="comics" class="marquee-wrapper">
+        <h2 class="section-title">GXG Comic Gallery</h2>
+
+        <!-- 1st Line: Right to Left (Images from 1ST LINE folder) -->
+        <div class="marquee-track">
+            <!-- Original Set -->
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (32).png" alt="Comic 32"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (33).png" alt="Comic 33"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (35).png" alt="Comic 35"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (37).png" alt="Comic 37"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (40).png" alt="Comic 40"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (45).png" alt="Comic 45"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (46).png" alt="Comic 46"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (50).png" alt="Comic 50"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (52).png" alt="Comic 52"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (55).png" alt="Comic 55"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (59).png" alt="Comic 59"></div>
+            <!-- Duplicate for Loop -->
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (32).png" alt="Comic 32"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (33).png" alt="Comic 33"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (35).png" alt="Comic 35"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (37).png" alt="Comic 37"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (40).png" alt="Comic 40"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (45).png" alt="Comic 45"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (46).png" alt="Comic 46"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (50).png" alt="Comic 50"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (52).png" alt="Comic 52"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (55).png" alt="Comic 55"></div>
+            <div class="comic-card"><img src="gxg comics/1ST LINE/GuuGuuGaaGaa (59).png" alt="Comic 59"></div>
+        </div>
+
+        <!-- 2nd Line: Left to Right (Images from 2ND LINE folder) -->
+        <div class="marquee-track-reverse">
+            <!-- Original Set -->
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (1).png" alt="Comic 1"></div>
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (5).png" alt="Comic 5"></div>
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (10).png" alt="Comic 10"></div>
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (11).png" alt="Comic 11"></div>
+
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (20).png" alt="Comic 20"></div>
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (25).png" alt="Comic 25"></div>
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (30).png" alt="Comic 30"></div>
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (7).png" alt="Comic 7"></div>
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (4).png" alt="Comic 4"></div>
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (6).png" alt="Comic 6"></div>
+            <!-- Duplicate for Loop -->
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (1).png" alt="Comic 1"></div>
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (5).png" alt="Comic 5"></div>
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (10).png" alt="Comic 10"></div>
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (11).png" alt="Comic 11"></div>
+
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (20).png" alt="Comic 20"></div>
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (25).png" alt="Comic 25"></div>
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (30).png" alt="Comic 30"></div>
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (7).png" alt="Comic 7"></div>
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (4).png" alt="Comic 4"></div>
+            <div class="comic-card"><img src="gxg comics/2ND LINE/GuuGuuGaaGaa (6).png" alt="Comic 6"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2 class="contact-title fade-in">Let's connect</h2>
+        <p class="hero-tagline fade-in">You can reach me on social media or message me directly for projects and
+            collaborations.</p>
+        <div class="contact-actions">
+            <div class="contact-links-wrapper">
+                <a href="https://t.me/bekyoverse_bot" class="social-link-btn social-round-mobile"><span>Telegram</span>
+                    <i class="fab fa-telegram-plane"></i></a>
+                <a href="https://www.facebook.com/bekyoverse" class="social-link-btn social-round-mobile"
+                    aria-label="Facebook">
+                    <span>Facebook</span> <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/bekyoverse/" class="social-link-btn social-round-mobile"
+                    aria-label="Instagram">
+                    <span>Instagram</span> <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/@bekyoverse" class="social-link-btn social-round-mobile"
+                    aria-label="YouTube">
+                    <span>YouTube</span> <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+
+            <div class="contact-footer">
+                <a href="javascript:void(0)" onclick="copyEmail()" class="gmail-copy-btn">
+                    <i class="fas fa-envelope"></i> Copy Email Address
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 BEKYOVerse. All rights reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+    <div id="copyToast" class="copy-toast">Gmail address copied to clipboard!</div>
+    <a href="https://m.me/bekyoverse" class="messenger-floating" target="_blank" title="Message me on Messenger">
+        <i class="fab fa-facebook-messenger"></i>
+    </a>
+</body>
+
+</html>

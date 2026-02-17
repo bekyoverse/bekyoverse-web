@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Service Guide - BEKYOVerse</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Fredoka:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #ba4a4a;
+            --dark-red: #1a0505;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-light: #ffffff;
+            --text-gray: rgba(255, 255, 255, 0.7);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .cta-button:hover {
+            background: #fff;
+            color: var(--primary-red);
+            transform: scale(1.05);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at center, #250808 0%, #110303 100%);
+            background-attachment: fixed;
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar & Dropdown Styles */
+        .nav-wrapper {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+
+        .nav-wrapper>* {
+            pointer-events: auto;
+        }
+
+        .home-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 6px 18px 6px 10px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .home-logo:hover {
+            background: #fff;
+            color: var(--primary-red);
+            transform: translateY(-2px);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 8px 12px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-left: 15px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .lang-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .lang-btn.active {
+            background: var(--primary-red);
+            color: #fff;
+        }
+
+        .home-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: floatLogo 3s ease-in-out infinite;
+        }
+
+        @keyframes floatLogo {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 12px 22px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        nav a:hover {
+            color: var(--primary-red);
+        }
+
+        .nav-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(26, 5, 5, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 10px;
+            min-width: 160px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .nav-item:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(10px);
+        }
+
+        .dropdown-content a {
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            display: block;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 160px 5% 60px;
+            background: radial-gradient(circle at center, rgba(186, 74, 74, 0.1) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .hero p {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Container */
+        .details-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+
+        .section-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--primary-red);
+            position: relative;
+        }
+
+        /* Package Cards */
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        @media (min-width: 992px) {
+            .package-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .addons-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .policy-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .package-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .package-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-red);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .package-name {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .package-features li {
+            padding: 0.4rem 0;
+            color: var(--text-gray);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .package-features li i {
+            color: var(--primary-red);
+            margin-top: 5px;
+        }
+
+        .package-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .package-timeline {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            display: block;
+        }
+
+        /* Add-Ons Section */
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .addon-box {
+            background: rgba(186, 74, 74, 0.05);
+            border: 1px solid rgba(186, 74, 74, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .addon-box:hover {
+            background: rgba(186, 74, 74, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .addon-box h4 {
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        /* Factors Section */
+        .factors-container {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .factor-item h5 {
+            color: var(--primary-red);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Fredoka', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Workflow */
+        .workflow-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+            padding-left: 50px;
+        }
+
+        .workflow-timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(186, 74, 74, 0.2);
+        }
+
+        .step-item {
+            position: relative;
+            margin-bottom: 3.5rem;
+        }
+
+        .step-item::before {
+            content: '';
+            position: absolute;
+            left: -42px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            border: 4px solid var(--dark-red);
+            z-index: 1;
+        }
+
+        .step-content h4 {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .step-num {
+            font-size: 0.9rem;
+            background: rgba(186, 74, 74, 0.1);
+            padding: 2px 10px;
+            border-radius: 8px;
+            color: var(--primary-red);
+            border: 1px solid rgba(186, 74, 74, 0.2);
+        }
+
+        .step-content p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        /* 3-Column Footer */
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .policy-card {
+            background: rgba(186, 74, 74, 0.05);
+            border: 1px solid rgba(186, 74, 74, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .policy-card strong {
+            display: block;
+            color: var(--primary-red);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .policy-card p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 5%;
+            background: linear-gradient(135deg, rgba(186, 74, 74, 0.1) 0%, transparent 100%);
+            border-radius: 40px;
+            border: 1px solid rgba(186, 74, 74, 0.1);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 45px;
+            background: var(--primary-red);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: var(--transition);
+            margin-top: 2rem;
+        }
+
+        .cta-button:hover {
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, var(--primary-red), var(--primary-red));
+            /* Apply background for clipping */
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 0;
+            color: var(--text-gray);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 1024px) {
+
+            .addons-grid,
+            .policy-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Floating Messenger Button - Glassmorphism Red */
+        .messenger-floating {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: rgba(186, 74, 74, 0.2);
+            backdrop-filter: blur(15px);
+            color: white !important;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 999999;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+        }
+
+        .messenger-floating:hover {
+            transform: scale(1.1) translateY(-5px);
+            background: rgba(186, 74, 74, 0.4);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 15px 40px rgba(186, 74, 74, 0.3);
+        }
+
+        /* Toast Notification */
+        .copy-toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(186, 74, 74, 0.9);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copy-toast.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-wrapper">
+        <a href="index.html" class="home-logo">
+            <img src="AI 3D Head.png" alt="Bekyo 3D Head">
+            <span>BEKYOVerse</span>
+        </a>
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="mm">မြန်မာ</button>
+        </div>
+        <nav>
+            <a href="index.html#about">About</a>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#portfolio">Portfolio</a>
+            <a href="index.html#comics">Comics</a>
+            <a href="course.html">Classes</a>
+            <div class="nav-item">
+                <a href="pricing.html" style="color: #ba4a4a; margin: 0;">Pricing</a>
+                <div class="dropdown-content">
+                    <a href="pricing.html#mascot"><i class="fas fa-mask"></i> Mascot</a>
+                    <a href="pricing.html#stickers"><i class="fas fa-sticky-note"></i> Stickers</a>
+                    <a href="pricing.html#illustration"><i class="fas fa-palette"></i> Illustration</a>
+                    <a href="pricing.html#comic"><i class="fas fa-book-open"></i> Comic</a>
+                    <a href="pricing.html#animation"><i class="fas fa-film"></i> Animation</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="index.html#contact">Contact</a>
+                <div class="dropdown-content">
+                    <a href="https://t.me/bekyoverse_bot" target="_blank"><i class="fab fa-telegram-plane"></i>
+                        Telegram</a>
+                    <a href="https://m.me/bekyoverse" target="_blank"><i class="fab fa-facebook-messenger"></i>
+                        Messenger</a>
+                    <a href="https://www.instagram.com/bekyoverse/" target="_blank"><i class="fab fa-instagram"></i>
+                        Instagram</a>
+                    <a href="https://www.facebook.com/bekyoverse" target="_blank"><i class="fab fa-facebook-f"></i>
+                        Facebook</a>
+                    <a href="https://www.youtube.com/@bekyoverse" target="_blank"><i class="fab fa-youtube"></i>
+                        YouTube</a>
+                    <a href="javascript:void(0)" onclick="copyEmail()" id="emailBtn"><i class="fas fa-envelope"></i>
+                        Gmail</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <section class="hero">
+        <h1>Animation Service Guide</h1>
+        <p>Premium 2D storytelling tailored to your vision</p>
+    </section>
+
+    <div class="details-container">
+        <!-- 1. Service Packages -->
+        <h2 class="section-title">Service Packages</h2>
+        <div class="package-grid">
+            <div class="package-card">
+                <h3 class="package-name">Essential Story</h3>
+                <ul class="package-features">
+                    <li><i class="fas fa-check"></i> Simple memories, loops, quick explainers</li>
+                    <li><i class="fas fa-check"></i> Focus on clarity and simple motion</li>
+                    <li><i class="fas fa-check"></i> ✅ Scripting Included</li>
+                    <li><i class="fas fa-check"></i> Simple / Abstract Background</li>
+                    <li><i class="fas fa-check"></i> Stock Music Only</li>
+                </ul>
+                <div class="package-price">800,000 MMK / Min</div>
+                <span class="package-timeline"><i class="fas fa-clock"></i> Timeline: 2 - 3 Weeks</span>
+            </div>
+
+            <div class="package-card" style="border-color: var(--primary-red); background: rgba(186, 74, 74, 0.1);">
+                <h3 class="package-name">Cinematic Story</h3>
+                <ul class="package-features">
+                    <li><i class="fas fa-check"></i> Wedding films, ads, life flashbacks</li>
+                    <li><i class="fas fa-check"></i> Focus on acting, emotion & atmosphere</li>
+                    <li><i class="fas fa-check"></i> ✅ Scripting Included</li>
+                    <li><i class="fas fa-check"></i> Detailed Scenes & Backgrounds</li>
+                    <li><i class="fas fa-check"></i> Licensed Music + Voiceover (Optional)</li>
+                </ul>
+                <div class="package-price">1,600,000 MMK / Min</div>
+                <span class="package-timeline"><i class="fas fa-clock"></i> Timeline: 3 - 4 Weeks</span>
+            </div>
+
+            <div class="package-card">
+                <h3 class="package-name">Premium</h3>
+                <ul class="package-features">
+                    <li><i class="fas fa-check"></i> TV commercials, high-end branding</li>
+                    <li><i class="fas fa-check"></i> Precision fluid motion & broadcast quality</li>
+                    <li><i class="fas fa-check"></i> ✅ Complete Art Direction</li>
+                    <li><i class="fas fa-check"></i> Custom Sound Design</li>
+                    <li><i class="fas fa-check"></i> Unlimited Revisions</li>
+                </ul>
+                <div class="package-price">2,400,000 MMK / Min</div>
+                <span class="package-timeline"><i class="fas fa-clock"></i> Timeline: 6 - 8 Weeks</span>
+            </div>
+        </div>
+
+        <!-- 2. Add-Ons -->
+        <h2 class="section-title">Add-On Services</h2>
+        <div class="addons-grid">
+            <div class="addon-box">
+                <h4><i class="fas fa-bolt"></i> Rush Delivery</h4>
+                <p>+25% of total price for expedited production.</p>
+            </div>
+            <div class="addon-box">
+                <h4><i class="fas fa-redo"></i> Extra Revision</h4>
+                <p>50,000 MMK per round (outside predefined policy).</p>
+            </div>
+            <div class="addon-box">
+                <h4><i class="fas fa-microphone"></i> Pro Voiceover</h4>
+                <p>Starting from 150,000 MMK (Depends on voice actor).</p>
+            </div>
+        </div>
+
+        <!-- 3. Quote Factors -->
+        <div class="factors-container">
+            <h3 style="font-family: 'Fredoka', sans-serif; text-align: center; font-size: 1.8rem; margin-bottom: 2rem;">
+                What Affects the Final Quote?</h3>
+            <div class="factors-grid">
+                <div class="factor-item">
+                    <h5><i class="fas fa-video"></i> Video Duration</h5>
+                    <p>Longer videos require more background art and character movement frames.</p>
+                </div>
+                <div class="factor-item">
+                    <h5><i class="fas fa-running"></i> Complexity</h5>
+                    <p>Character acting, fluid action, and multiple characters increase production work.</p>
+                </div>
+                <div class="factor-item">
+                    <h5><i class="fas fa-paint-brush"></i> Art Detail</h5>
+                    <p>Higher detail levels in character shading and environment take longer to create.</p>
+                </div>
+                <div class="factor-item">
+                    <h5><i class="fas fa-pen-nib"></i> Story Dev</h5>
+                    <p>Original story concepts need more planning than working from a script.</p>
+                </div>
+                <div class="factor-item">
+                    <h5><i class="fas fa-hourglass-half"></i> Deadlines</h5>
+                    <p>Rush projects may require additional resources to meet tight schedules.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Workflow -->
+        <h2 class="section-title">Animation Workflow</h2>
+        <div class="workflow-timeline">
+            <div class="step-item">
+                <div class="step-content">
+                    <h4><span class="step-num">01</span> Briefing</h4>
+                    <p>Discussing your vision, goals, and story ideas with us.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-content">
+                    <h4><span class="step-num">02</span> Script Writing</h4>
+                    <p>Finalizing the narrative and dialogue based on your brief.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-content">
+                    <h4><span class="step-num">03</span> Storyboard Approval</h4>
+                    <p>Reviewing conceptual sketches to align on the visual flow.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-content">
+                    <h4><span class="step-num">04</span> Production</h4>
+                    <p>Bringing characters to life with professional animation and sound.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-content">
+                    <h4><span class="step-num">05</span> Revision</h4>
+                    <p>Fine-tuning the details based on our agreed revision policy.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-content">
+                    <h4><span class="step-num">06</span> Final Delivery</h4>
+                    <p>Receiving your high-quality, polished animation project.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Footer Policies -->
+        <div class="policy-grid">
+            <div class="policy-card">
+                <strong><i class="fas fa-edit"></i> Revision Policy</strong>
+                <p><strong>Sketch Stage:</strong> Minor 5x, Major 2x.<br><strong>Animation Phase:</strong> Once
+                    production starts, limited to Color & Sound tweaks only.</p>
+            </div>
+            <div class="policy-card">
+                <strong><i class="fas fa-wallet"></i> Payment Terms</strong>
+                <p>50% Deposit to start project / 50% Final Payment due strictly before final delivery.</p>
+            </div>
+            <div class="policy-card">
+                <strong><i class="fas fa-info-circle"></i> Important Notes</strong>
+                <p>Advance booking is encouraged for firm deadlines. Animation is custom work that requires focused
+                    effort.</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="font-family: 'Fredoka', sans-serif; font-size: 2rem;">Ready to Start?</h2>
+            <p style="color: var(--text-gray); margin-top: 10px;">Contact BEKYOVerse to discuss your idea and begin
+                planning your animation together.</p>
+            <a href="index.html#contact" class="cta-button">Start My Animation</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 BEKYOVerse. All rights reserved.</p>
+    </footer>
+    <script>
+        // Copy Email Function
+        function copyEmail() {
+            const email = 'bekyoverse@gmail.com';
+            navigator.clipboard.writeText(email).then(() => {
+                const toast = document.getElementById('copyToast');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000);
+            });
+        }
+
+        // Language Switcher
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const currentLang = localStorage.getItem('language') || 'en';
+
+        langButtons.forEach(btn => {
+            if (btn.dataset.lang === currentLang) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const selectedLang = btn.dataset.lang;
+                localStorage.setItem('language', selectedLang);
+                langButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+    <div id="copyToast" class="copy-toast">Gmail address copied to clipboard!</div>
+    <a href="https://m.me/bekyoverse" class="messenger-floating" target="_blank" title="Message me on Messenger">
+        <i class="fab fa-facebook-messenger"></i>
+    </a>
+</body>
+
+</html>
