@@ -201,6 +201,7 @@
     }
 
     /* Flexible Images and Cards - Centered Vertical Stack */
+    .price-card,
     .package-card,
     .service-card,
     .portfolio-item {

@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Illustration Service - BEKYOVerse</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Fredoka:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <meta name="description"
+        content="Custom Illustration & Digital Art by BEKYOVerse. Character portraits, cover art, music covers, thumbnails and more.">
+    <meta property="og:title" content="Illustration Service - BEKYOVerse">
+    <meta property="og:description"
+        content="Flat-style cartoon illustration for personal and commercial use. One artwork, your vision fully realized.">
+    <meta property="og:image" content="https://bekyoverse-web.vercel.app/AI%203D%20Head.png">
+
+    <style>
+        .section-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.8rem;
+            color: #fff;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(186, 74, 74, 0.4);
+        }
+
+        .details-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* ── Pricing cards ── */
+        .pricing-two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .pricing-two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .price-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .price-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(186, 74, 74, 0.5);
+        }
+
+        .price-card.featured {
+            border-color: var(--primary-red);
+            background: rgba(186, 74, 74, 0.08);
+        }
+
+        .price-card h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.4rem;
+            color: #fff;
+            margin: 0;
+        }
+
+        .price-card .sub {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .price-card .price-range {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .price-card .price-range span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .price-card .mmk-label {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.35);
+            margin-top: -4px;
+        }
+
+        .price-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0;
+        }
+
+        .price-card ul li {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.65);
+            padding: 0.28rem 0;
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-start;
+        }
+
+        .price-card ul li i {
+            color: #ba4a4a;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .package-badge {
+            display: inline-block;
+            background: #ba4a4a;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.3rem;
+        }
+
+        /* ── What I make — tag cloud style ── */
+        .what-i-make {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .make-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .make-tag:hover {
+            background: rgba(186, 74, 74, 0.15);
+            border-color: rgba(186, 74, 74, 0.4);
+            color: #fff;
+        }
+
+        /* ── Price factors grid ── */
+        .factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .factor-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            padding: 1.2rem 1.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .factor-card .f-icon {
+            font-size: 1.3rem;
+            color: #ba4a4a;
+        }
+
+        .factor-card h4 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+        }
+
+        .factor-card p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.45);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ── Surcharge ── */
+        .surcharge-row {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            padding: 1.2rem 1.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .surcharge-row .s-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .surcharge-row .s-label span {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            display: block;
+            margin-top: 2px;
+        }
+
+        .surcharge-row .s-price {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fff;
+            white-space: nowrap;
+            text-align: right;
+        }
+
+        .surcharge-row .s-mmk {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.35);
+            text-align: right;
+        }
+
+        /* ── Workflow ── */
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .workflow-step {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            padding: 1.4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .workflow-step::before {
+            content: attr(data-num);
+            position: absolute;
+            top: -10px;
+            right: 12px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 4rem;
+            color: rgba(186, 74, 74, 0.1);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .workflow-step h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 0.5rem;
+        }
+
+        .workflow-step h4 .step-icon {
+            color: #ba4a4a;
+            margin-right: 6px;
+        }
+
+        .workflow-step p {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.55);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .workflow-step .deposit-tag {
+            display: inline-block;
+            background: rgba(186, 74, 74, 0.2);
+            color: #ba4a4a;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-top: 0.5rem;
+        }
+
+        /* ── Revision table ── */
+        .revision-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .revision-table th {
+            text-align: left;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(255, 255, 255, 0.4);
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .revision-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .revision-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .revision-table .stage {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* ── Policy grid ── */
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .policy-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.4rem;
+        }
+
+        .policy-card strong {
+            display: block;
+            font-size: 0.9rem;
+            color: #fff;
+            margin-bottom: 0.6rem;
+        }
+
+        .policy-card strong i {
+            color: #ba4a4a;
+            margin-right: 6px;
+        }
+
+        .policy-card p,
+        .policy-card li {
+            font-size: 0.83rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .policy-card ul {
+            padding-left: 1rem;
+            margin: 0;
+        }
+
+        .policy-card li {
+            margin-bottom: 0.25rem;
+        }
+
+        /* ── FAQ ── */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 1rem 1.2rem;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .faq-icon {
+            color: #ba4a4a;
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.3s ease;
+            padding: 0 1.2rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+            padding: 0 1.2rem 1rem;
+        }
+
+        /* ── Info note ── */
+        .info-note {
+            background: rgba(186, 74, 74, 0.08);
+            border: 1px solid rgba(186, 74, 74, 0.2);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            font-size: 0.83rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 1rem;
+        }
+
+        .info-note i {
+            color: #ba4a4a;
+            margin-right: 6px;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 3rem 0 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="nav-wrapper">
+        <a href="index.html" class="home-logo">
+            <img src="AI 3D Head.png" alt="Bekyo 3D Head">
+            <span>BEKYOVerse</span>
+        </a>
+        <div class="nav-right-group">
+            <div class="nav-item">
+                <a href="#" class="glass-circle"><i class="fas fa-globe"></i></a>
+                <div class="dropdown-content">
+                    <a href="illustration.html">English</a>
+                    <a href="illustration-mm.html">မြန်မာဘာသာ</a>
+                </div>
+            </div>
+            <div class="mobile-menu-btn" onclick="document.querySelector('nav').classList.toggle('mobile-active')">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <a href="index.html#about">About</a>
+                <a href="index.html#portfolio">Portfolio</a>
+                <a href="index.html#comics">Comics</a>
+                <a href="index.html#services">Services</a>
+                <div class="nav-item">
+                    <a href="pricing.html">Pricing</a>
+                    <div class="dropdown-content">
+                        <a href="mascot.html"><i class="fas fa-mask"></i> Mascot</a>
+                        <a href="stickers.html"><i class="fas fa-sticky-note"></i> Stickers</a>
+                        <a href="illustration.html"><i class="fas fa-palette"></i> Illustration</a>
+                        <a href="comic.html"><i class="fas fa-book-open"></i> Comic</a>
+                        <a href="animation.html"><i class="fas fa-film"></i> Animation</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="index.html#contact">Contact</a>
+                    <div class="dropdown-content">
+                        <a href="https://t.me/bekyoverse_bot" target="_blank"><i class="fab fa-telegram-plane"></i>
+                            Telegram</a>
+                        <a href="https://m.me/bekyoverse" target="_blank"><i class="fab fa-facebook-messenger"></i>
+                            Messenger</a>
+                        <a href="https://www.instagram.com/bekyoverse/" target="_blank"><i class="fab fa-instagram"></i>
+                            Instagram</a>
+                        <a href="https://www.facebook.com/bekyoverse" target="_blank"><i class="fab fa-facebook-f"></i>
+                            Facebook</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero illustration-hero">
+        <h1>Illustration Service</h1>
+        <p>One artwork. Your vision, fully realized.</p>
+    </section>
+
+    <div class="details-container">
+
+        <!-- ── 1. Pricing ── -->
+        <h2 class="section-title"><i class="fas fa-palette" style="color:#ba4a4a;margin-right:10px;"></i>Pricing</h2>
+        <div class="pricing-two-col">
+
+            <!-- Personal -->
+            <div class="price-card">
+                <div>
+                    <h3>Personal Use</h3>
+                    <p class="sub">Fanart · OC · Gift · Portrait · Seasonal Art</p>
+                </div>
+                <div>
+                    <div class="price-range">$30 – $60 <span>/ artwork</span></div>
+                    <div class="mmk-label">120,000 – 240,000 MMK</div>
+                </div>
+                <ul>
+                    <li><i class="fas fa-check"></i> For personal enjoyment, gifts, or non-commercial use</li>
+                    <li><i class="fas fa-check"></i> High-resolution PNG file (300 DPI)</li>
+                    <li><i class="fas fa-check"></i> Transparent BG version included</li>
+                    <li><i class="fas fa-check"></i> Source file included</li>
+                    <li><i class="fas fa-check"></i> 2 Revision rounds</li>
+                </ul>
+            </div>
+
+            <!-- Commercial -->
+            <div class="price-card featured">
+                <div>
+                    <span class="package-badge">Commercial</span>
+                    <h3>Commercial Use</h3>
+                    <p class="sub">Cover Art · Music Cover · Thumbnail · Brand · Merch</p>
+                </div>
+                <div>
+                    <div class="price-range">$50 – $100 <span>/ artwork</span></div>
+                    <div class="mmk-label">200,000 – 400,000 MMK</div>
+                </div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Full commercial rights included</li>
+                    <li><i class="fas fa-check"></i> Book covers, music singles, EP/album art</li>
+                    <li><i class="fas fa-check"></i> YouTube thumbnails, social media visuals</li>
+                    <li><i class="fas fa-check"></i> Merchandise, brand use, print</li>
+                    <li><i class="fas fa-check"></i> High-resolution PNG file (300 DPI)</li>
+                    <li><i class="fas fa-check"></i> Transparent BG + Web-optimized versions</li>
+                    <li><i class="fas fa-check"></i> Source file included</li>
+                    <li><i class="fas fa-check"></i> 2 Revision rounds</li>
+                </ul>
+            </div>
+        </div>
+        <div class="info-note">
+            <i class="fas fa-info-circle"></i> Final price is confirmed after reviewing your brief. The range reflects
+            complexity — a simple bust portrait sits at the lower end, a detailed scene with multiple characters at the
+            higher end.
+        </div>
+
+        <!-- ── 2. What I Can Make ── -->
+        <h2 class="section-title"><i class="fas fa-star" style="color:#ba4a4a;margin-right:10px;"></i>What I Can Make
+        </h2>
+        <div class="what-i-make">
+            <span class="make-tag">Character Portraits</span>
+            <span class="make-tag">OC / Original Characters</span>
+            <span class="make-tag">Fanart</span>
+            <span class="make-tag">Book &amp; Novel Covers</span>
+            <span class="make-tag">Music Single Cover</span>
+            <span class="make-tag">EP / Album Art</span>
+            <span class="make-tag">YouTube Thumbnails</span>
+            <span class="make-tag">Podcast Cover</span>
+            <span class="make-tag">Social Media Visuals</span>
+            <span class="make-tag">Seasonal &amp; Event Art</span>
+            <span class="make-tag">Gift Illustration</span>
+            <span class="make-tag">Couple / Group Portrait</span>
+            <span class="make-tag">Merchandise Art</span>
+            <span class="make-tag">Brand Illustration</span>
+        </div>
+        <div class="info-note">
+            <i class="fas fa-info-circle"></i> Don't see what you need? Just describe it — if I can draw it, I will.
+        </div>
+
+        <!-- ── 3. What Affects Price ── -->
+        <h2 class="section-title"><i class="fas fa-sliders-h" style="color:#ba4a4a;margin-right:10px;"></i>What Affects
+            the Final Price</h2>
+        <div class="factors-grid">
+            <div class="factor-card">
+                <div class="f-icon"><i class="fas fa-user"></i></div>
+                <h4>Number of Characters</h4>
+                <p>More characters = more time. First character is included in base price.</p>
+            </div>
+            <div class="factor-card">
+                <div class="f-icon"><i class="fas fa-mountain"></i></div>
+                <h4>Background Complexity</h4>
+                <p>No BG / flat color = lower end. Detailed scene with multiple elements = higher end.</p>
+            </div>
+            <div class="factor-card">
+                <div class="f-icon"><i class="fas fa-font"></i></div>
+                <h4>Typography / Text</h4>
+                <p>Title text, song name, or any lettering included in the artwork adds to the scope.</p>
+            </div>
+            <div class="factor-card">
+                <div class="f-icon"><i class="fas fa-ruler-combined"></i></div>
+                <h4>Dimensions / Format</h4>
+                <p>Square, portrait, landscape, or platform-specific sizes (e.g. Spotify 3000×3000px).</p>
+            </div>
+        </div>
+
+        <!-- Extra character surcharge -->
+        <div class="surcharge-row">
+            <div>
+                <div class="s-label">Extra Character Surcharge
+                    <span>Applied from the 2nd character onwards, per character</span>
+                </div>
+            </div>
+            <div>
+                <div class="s-price">+$20</div>
+                <div class="s-mmk">+80,000 MMK each</div>
+            </div>
+        </div>
+
+        <!-- ── 4. Workflow ── -->
+        <h2 class="section-title"><i class="fas fa-route" style="color:#ba4a4a;margin-right:10px;"></i>Workflow</h2>
+        <div class="workflow-grid">
+            <div class="workflow-step" data-num="01">
+                <h4><i class="fas fa-comments step-icon"></i>Brief &amp; Reference</h4>
+                <p>Tell me what you want — character description, mood, purpose, and any references you have. The more
+                    detail, the better.</p>
+            </div>
+            <div class="workflow-step" data-num="02">
+                <h4><i class="fas fa-calculator step-icon"></i>Quote Confirmation</h4>
+                <p>I review your brief and confirm the final price before anything starts. No surprises.</p>
+            </div>
+            <div class="workflow-step" data-num="03">
+                <h4><i class="fas fa-wallet step-icon"></i>Deposit Payment</h4>
+                <p>50% deposit required before work begins. Work starts after payment is confirmed.</p>
+                <span class="deposit-tag">50% Deposit</span>
+            </div>
+            <div class="workflow-step" data-num="04">
+                <h4><i class="fas fa-pencil-alt step-icon"></i>Sketch</h4>
+                <p>A rough sketch is shared for composition and pose approval before moving to final line art.</p>
+            </div>
+            <div class="workflow-step" data-num="05">
+                <h4><i class="fas fa-paint-brush step-icon"></i>Color &amp; Finish</h4>
+                <p>Flat color applied, details refined. Final revision round happens here before export.</p>
+            </div>
+            <div class="workflow-step" data-num="06">
+                <h4><i class="fas fa-check-circle step-icon"></i>Final Payment &amp; Delivery</h4>
+                <p>Remaining 50% paid, then all files delivered via Google Drive or WeTransfer.</p>
+                <span class="deposit-tag">50% Final</span>
+            </div>
+        </div>
+        <div class="info-note">
+            <i class="fas fa-info-circle"></i> After delivery, a <strong>7-day support window</strong> is included for
+            minor fixes and file format requests.
+        </div>
+
+        <!-- ── 5. Revision Policy ── -->
+        <h2 class="section-title"><i class="fas fa-edit" style="color:#ba4a4a;margin-right:10px;"></i>Revision Policy
+        </h2>
+        <table class="revision-table">
+            <thead>
+                <tr>
+                    <th>Stage</th>
+                    <th>What's Allowed</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="stage">Sketch</td>
+                    <td>Composition, pose, and layout changes. Up to 2 major direction changes (extra redraws: $15 /
+                        60,000 MMK each).</td>
+                </tr>
+                <tr>
+                    <td class="stage">Color &amp; Detail</td>
+                    <td>Color palette changes, minor element adjustments. No full redraws at this stage.</td>
+                </tr>
+                <tr>
+                    <td class="stage">Final / After Export</td>
+                    <td>File format corrections only. No visual changes after final approval.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="info-note">
+            <i class="fas fa-info-circle"></i> Each order includes <strong>2 revision rounds</strong>. Send all feedback
+            in one message per round. Extra rounds are $15 / 60,000 MMK each.
+        </div>
+
+        <!-- ── 6. Payment Terms ── -->
+        <h2 class="section-title"><i class="fas fa-wallet" style="color:#ba4a4a;margin-right:10px;"></i>Payment Terms
+        </h2>
+        <div class="policy-grid">
+            <div class="policy-card">
+                <strong><i class="fas fa-percentage"></i> Payment Schedule</strong>
+                <ul>
+                    <li>50% deposit before work starts</li>
+                    <li>50% final payment before files are released</li>
+                    <li>Deposit is <strong style="color:#fff;">non-refundable</strong> once sketching has begun</li>
+                </ul>
+            </div>
+            <div class="policy-card">
+                <strong><i class="fas fa-credit-card"></i> Accepted Methods</strong>
+                <ul>
+                    <li>KPay / Wave Pay</li>
+                    <li>Bank Transfer (Myanmar)</li>
+                    <li>PayPal / Wise (International)</li>
+                </ul>
+            </div>
+            <div class="policy-card">
+                <strong><i class="fas fa-file-contract"></i> Cancellation Policy</strong>
+                <ul>
+                    <li>Cancelled before sketch: full refund</li>
+                    <li>Cancelled after sketch: deposit forfeited</li>
+                    <li>No refund after final delivery</li>
+                </ul>
+            </div>
+            <div class="policy-card">
+                <strong><i class="fas fa-shield-alt"></i> Rights &amp; Ownership</strong>
+                <ul>
+                    <li>Personal: for non-commercial use only</li>
+                    <li>Commercial: full commercial rights on final payment</li>
+                    <li>Portfolio display rights retained by BEKYOVerse</li>
+                    <li>Request private/NDA for confidentiality</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ── 7. FAQ ── -->
+        <h2 class="section-title"><i class="fas fa-question-circle"
+                style="color:#ba4a4a;margin-right:10px;"></i>Frequently Asked Questions</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How do I know the final price before paying?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">Send me your brief first — what you want, how many characters, background
+                    complexity, and purpose (personal or commercial). I'll give you a confirmed price before any payment
+                    is made. No surprises.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    What's the difference between personal and commercial?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">Personal use means the artwork is for your own enjoyment — a gift, wallpaper,
+                    fanart, or personal portrait. Commercial use means you'll use it to make money or promote a business
+                    — book covers, music releases, merchandise, brand content, social media for your business, etc.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Can I use a personal-use illustration commercially later?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">Yes — you can upgrade to commercial rights by paying the difference in price.
+                    Contact me before using it commercially.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Do you draw in any style or only your own?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">I work in my own flat cartoon style. If you need me to match a very specific
+                    existing style, send references and I'll let you know if it's achievable. Style adaptation may
+                    affect pricing.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Can you add text / title to the artwork?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">Yes. Song titles, book titles, names, or any text can be included in the
+                    artwork. Let me know in your brief what text you need and what style or mood you want for it.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    What file formats will I receive?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">PNG (300 DPI, print-ready), PNG with transparent background, web-optimized
+                    version (72 DPI), and the source file. For platform-specific exports (e.g. Spotify 3000×3000px,
+                    YouTube 2560×1440px), just let me know the platform and I'll export at the correct size.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How long does it take?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">Typically 5–7 days for a single illustration. Complex pieces with multiple
+                    characters or detailed backgrounds may take up to 10 days. Rush delivery (timeline halved) is
+                    available for a +50% surcharge — contact me first to check availability.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Do you work with international clients?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">Yes. Payment via PayPal or Wise for international clients. Communication in
+                    English. Files delivered via Google Drive or WeTransfer.</div>
+            </div>
+        </div>
+
+        <!-- ── CTA ── -->
+        <div class="cta-section">
+            <h2 style="font-family:'Fredoka',sans-serif;font-size:2rem;">Ready to bring your idea to life?</h2>
+            <p style="color:rgba(255,255,255,0.5);margin-top:10px;">Tell me what you want and I'll give you a quote.</p>
+            <a href="index.html#contact" class="cta-button" style="display:inline-block;margin-top:1.5rem;">Start
+                Project</a>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 BEKYOVerse. All rights reserved.</p>
+        <a href="#" class="back-to-top">Back to Top ↑</a>
+    </footer>
+
+    <script src="main.js"></script>
+    <div id="copyToast" class="copy-toast">Email copied ✓</div>
+    <a href="https://m.me/bekyoverse" class="messenger-floating" target="_blank" title="Message me on Messenger">
+        <i class="fab fa-facebook-messenger"></i>
+    </a>
+
+    <script>
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
+    </script>
+</body>
+
+</html>

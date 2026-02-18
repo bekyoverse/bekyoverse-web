@@ -4,56 +4,518 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>အန်နီမေးရှင်း ဝန်ဆောင်မှု လမ်းညွှန် - BEKYOVerse</title>
+    <title>Animation Service - BEKYOVerse</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Fredoka:wght@700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mobile.css">
-    <!-- SEO & Social Sharing -->
-    <meta name="description" content="BEKYOVerse 2D Animation ဝန်ဆောင်မှု လမ်းညွှန်နှင့် လုပ်ငန်းစဉ်များ။">
-    <meta property="og:title" content="အန်နီမေးရှင်း ဝန်ဆောင်မှု လမ်းညွှန် - BEKYOVerse">
+    <meta name="description"
+        content="Professional 2D Animation Service by BEKYOVerse. Storytelling, wedding films, ads and more.">
+    <meta property="og:title" content="Animation Service - BEKYOVerse">
     <meta property="og:description"
-        content="သင့်စိတ်ကူးများကို အန်နီမေးရှင်းအဖြစ် အသက်သွင်းပါ။ ဝန်ဆောင်မှုများနှင့် စတင်နိုင်မည့်နည်းလမ်းများ။">
+        content="Premium 2D storytelling tailored to your vision. See packages, workflow, and FAQs.">
     <meta property="og:image" content="https://bekyoverse-web.vercel.app/AI%203D%20Head.png">
+
+    <style>
+        .section-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.8rem;
+            color: #fff;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(186, 74, 74, 0.4);
+        }
+
+        .details-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* ── Package cards ── */
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .package-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .package-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(186, 74, 74, 0.5);
+        }
+
+        .package-card.featured {
+            border-color: var(--primary-red);
+            background: rgba(186, 74, 74, 0.08);
+        }
+
+        .package-card .package-name {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.4rem;
+            color: #fff;
+            margin: 0;
+        }
+
+        .package-card .package-sub {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin: 0;
+        }
+
+        .package-card .package-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex: 1;
+        }
+
+        .package-card .package-features li {
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.86rem;
+            padding: 0.28rem 0;
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-start;
+        }
+
+        .package-card .package-features li i {
+            color: #ba4a4a;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .feature-group-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #ba4a4a;
+            margin: 0.7rem 0 0.2rem;
+        }
+
+        .package-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .package-price .mmk {
+            font-size: 0.82rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.4);
+            display: block;
+            margin-top: 2px;
+        }
+
+        .package-price .min-note {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.35);
+            display: block;
+            margin-top: 4px;
+        }
+
+        .package-timeline {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .package-timeline i {
+            margin-right: 4px;
+        }
+
+        .package-badge {
+            display: inline-block;
+            background: #ba4a4a;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.3rem;
+        }
+
+        /* ── Minimum note box ── */
+        .minimum-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.2rem 1.6rem;
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .minimum-box .m-icon {
+            font-size: 1.4rem;
+            color: #ba4a4a;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .minimum-box h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 0.3rem;
+        }
+
+        .minimum-box p {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ── Add-ons table ── */
+        .addons-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+
+        .addons-table th {
+            text-align: left;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(255, 255, 255, 0.4);
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .addons-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.88rem;
+        }
+
+        .addons-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .addons-table .addon-price {
+            font-weight: 700;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .addons-table .addon-mmk {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .addons-table tr:hover td {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* ── Factors grid ── */
+        .factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .factor-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            padding: 1.2rem 1.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .factor-card .f-icon {
+            font-size: 1.3rem;
+            color: #ba4a4a;
+        }
+
+        .factor-card h4 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+        }
+
+        .factor-card p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.45);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ── Workflow ── */
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .workflow-step {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            padding: 1.4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .workflow-step::before {
+            content: attr(data-num);
+            position: absolute;
+            top: -10px;
+            right: 12px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 4rem;
+            color: rgba(186, 74, 74, 0.1);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .workflow-step h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 0.5rem;
+        }
+
+        .workflow-step h4 .step-icon {
+            color: #ba4a4a;
+            margin-right: 6px;
+        }
+
+        .workflow-step p {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.55);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .workflow-step .deposit-tag {
+            display: inline-block;
+            background: rgba(186, 74, 74, 0.2);
+            color: #ba4a4a;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-top: 0.5rem;
+        }
+
+        /* ── Revision table ── */
+        .revision-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .revision-table th {
+            text-align: left;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(255, 255, 255, 0.4);
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .revision-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .revision-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .revision-table .stage {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* ── Policy grid ── */
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .policy-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.4rem;
+        }
+
+        .policy-card strong {
+            display: block;
+            font-size: 0.9rem;
+            color: #fff;
+            margin-bottom: 0.6rem;
+        }
+
+        .policy-card strong i {
+            color: #ba4a4a;
+            margin-right: 6px;
+        }
+
+        .policy-card p,
+        .policy-card li {
+            font-size: 0.83rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .policy-card ul {
+            padding-left: 1rem;
+            margin: 0;
+        }
+
+        .policy-card li {
+            margin-bottom: 0.25rem;
+        }
+
+        /* ── FAQ ── */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 1rem 1.2rem;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .faq-icon {
+            color: #ba4a4a;
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.3s ease;
+            padding: 0 1.2rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+            padding: 0 1.2rem 1rem;
+        }
+
+        /* ── Info note ── */
+        .info-note {
+            background: rgba(186, 74, 74, 0.08);
+            border: 1px solid rgba(186, 74, 74, 0.2);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            font-size: 0.83rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 1rem;
+        }
+
+        .info-note i {
+            color: #ba4a4a;
+            margin-right: 6px;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 3rem 0 1rem;
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Navbar -->
     <div class="nav-wrapper">
-        <a href="index.html" class="home-logo">
+        <a href="index-mm.html" class="home-logo">
             <img src="AI 3D Head.png" alt="Bekyo 3D Head">
             <span>BEKYOVerse</span>
         </a>
-
         <div class="nav-right-group">
             <div class="nav-item">
                 <a href="#" class="glass-circle"><i class="fas fa-globe"></i></a>
                 <div class="dropdown-content">
                     <a href="animation.html">English</a>
-                    <a href="animation-mm.html">မြန်မာဘာသာ</a>
+                    <a href="#" class="current-page">မြန်မာဘာသာ</a>
                 </div>
             </div>
             <div class="mobile-menu-btn" onclick="document.querySelector('nav').classList.toggle('mobile-active')">
                 <i class="fas fa-bars"></i>
             </div>
             <nav>
-                <a href="index.html#about">About</a>
-                <a href="index.html#portfolio">Portfolio</a>
-                <a href="index.html#comics">Comics</a>
-                <a href="index.html#services">Services</a>
+                <a href="index-mm.html#about">အကြောင်း</a>
+                <a href="index-mm.html#portfolio">လက်ရာများ</a>
+                <a href="index-mm.html#comics">ရုပ်ပြ</a>
+                <a href="index-mm.html#services">ဝန်ဆောင်မှုများ</a>
                 <div class="nav-item">
-                    <a href="pricing-mm.html">Pricing</a>
+                    <a href="pricing-mm.html">ဈေးနှုန်း</a>
                     <div class="dropdown-content">
-                        <a href="pricing-mm.html#mascot"><i class="fas fa-mask"></i> Mascot</a>
-                        <a href="pricing-mm.html#stickers"><i class="fas fa-sticky-note"></i> Stickers</a>
-                        <a href="pricing-mm.html#illustration"><i class="fas fa-palette"></i> Illustration</a>
-                        <a href="pricing-mm.html#comic"><i class="fas fa-book-open"></i> Comic</a>
-                        <a href="animation-mm.html"><i class="fas fa-film"></i> Animation</a>
+                        <a href="mascot-mm.html"><i class="fas fa-mask"></i> မက်စ်ကော့</a>
+                        <a href="stickers-mm.html"><i class="fas fa-sticky-note"></i> စတစ်ကာ</a>
+                        <a href="illustration-mm.html"><i class="fas fa-palette"></i> ပုံဆွဲ</a>
+                        <a href="comic-mm.html"><i class="fas fa-book-open"></i> ရုပ်ပြ</a>
+                        <a href="animation-mm.html" class="current-page"><i class="fas fa-film"></i> အန်နီမေးရှင်း</a>
                     </div>
                 </div>
                 <div class="nav-item">
-                    <a href="index.html#contact">Contact</a>
+                    <a href="index-mm.html#contact">ဆက်သွယ်ရန်</a>
                     <div class="dropdown-content">
                         <a href="https://t.me/bekyoverse_bot" target="_blank"><i class="fab fa-telegram-plane"></i>
                             Telegram</a>
@@ -69,183 +531,461 @@
         </div>
     </div>
 
+    <!-- Hero -->
     <section class="hero animation-hero">
-        <h1>အန်နီမေးရှင်း ဝန်ဆောင်မှု လမ်းညွှန်</h1>
-        <p>သင်၏ စိတ်ကူးများကို အသက်သွင်းပေးမည့် အဆင့်မြင့် 2D Storytelling ဝန်ဆောင်မှု</p>
+        <h1>2D Animation Service</h1>
+        <p>သင့်ရည်မှန်းချက်နှင့် ကိုက်ညီသော Premium Storytelling</p>
     </section>
 
     <div class="details-container">
-        <!-- 1. Service Packages -->
-        <h2 class="section-title">ဝန်ဆောင်မှု အစီအစဉ်များ</h2>
+
+        <!-- ── 1. Packages ── -->
+        <h2 class="section-title"><i class="fas fa-film" style="color:#ba4a4a;margin-right:10px;"></i>Service Packages
+        </h2>
         <div class="package-grid">
-            <div class="package-card">
-                <h3 class="package-name">Essential Story</h3>
-                <ul class="package-features">
-                    <li><i class="fas fa-check"></i> အသင့်တော်ဆုံး: ရိုးရှင်းသော အမှတ်တရဗီဒီယိုများ၊ Loops နှင့်
-                        ရှင်းလင်းချက်ဗီဒီယိုတိုများ။</li>
-                    <li><i class="fas fa-check"></i> Visual Style: ရှင်းလင်းမှုနှင့် ရိုးရှင်းသော လှုပ်ရှားမှုများကို
-                        အဓိကထားသည်။</li>
-                    <li><i class="fas fa-check"></i> ✅ Scripting: ပါဝင်ပြီး။</li>
-                    <li><i class="fas fa-check"></i> နောက်ခံ: ရိုးရှင်းသော/Abstract Background။</li>
-                    <li><i class="fas fa-check"></i> တေးဂီတ: Stock Music သီးသန့်။</li>
-                </ul>
-                <div class="package-price">800,000 MMK / ၁ မိနစ်</div>
-                <span class="package-timeline"><i class="fas fa-clock"></i> ကြာချိန်: ၂ ပတ် မှ ၃ ပတ်</span>
-            </div>
 
-            <div class="package-card" style="border-color: var(--primary-red); background: rgba(186, 74, 74, 0.1);">
-                <h3 class="package-name">Cinematic Story</h3>
-                <ul class="package-features">
-                    <li><i class="fas fa-check"></i> အသင့်တော်ဆုံး: မင်္ဂလာဆောင်မှတ်တမ်း၊ ကြော်ငြာများ၊
-                        ဘဝဖြတ်သန်းမှုပုံရိပ်များ။</li>
-                    <li><i class="fas fa-check"></i> Visual Style: သရုပ်ဆောင်ချက်၊ ခံစားချက်နှင့်
-                        ပတ်ဝန်းကျင်အငွေ့အသက်ကို အဓိကထားသည်။</li>
-                    <li><i class="fas fa-check"></i> ✅ Scripting: ပါဝင်ပြီး။</li>
-                    <li><i class="fas fa-check"></i> နောက်ခံ: အသေးစိတ်ကျသော မြင်ကွင်းနှင့် နောက်ခံများ။</li>
-                    <li><i class="fas fa-check"></i> တေးဂီတ: Licensed Music + Voiceover (ရွေးချယ်ရန်)။</li>
-                </ul>
-                <div class="package-price">1,600,000 MMK / ၁ မိနစ်</div>
-                <span class="package-timeline"><i class="fas fa-clock"></i> ကြာချိန်: ၃ ပတ် မှ ၄ ပတ်</span>
-            </div>
-
+            <!-- Essential -->
             <div class="package-card">
-                <h3 class="package-name">Premium</h3>
+                <div>
+                    <h3 class="package-name">Essential Story</h3>
+                    <p class="package-sub">ရိုးရှင်းသောမှတ်တမ်း · လန်းဆန်းသောပုံသေကွင်း · မြန်မြန်ရှင်းပြချက်</p>
+                </div>
                 <ul class="package-features">
-                    <li><i class="fas fa-check"></i> အသင့်တော့်ဆုံး: TV ကြော်ငြာများ၊ အဆင့်မြင့် Branding လုပ်ငန်းများ။
+                    <p class="feature-group-title">Style</p>
+                    <li><i class="fas fa-check"></i> ရိုးရှင်းပြီး ချစ်စဖွယ် — ရှင်းလင်းပြတ်သားသော motion ကို အဓိကထားသည်
                     </li>
-                    <li><i class="fas fa-check"></i> Visual Style: တိကျသေချာပြီး ချောမွေ့လွန်းသော လှုပ်ရှားမှုနှင့်
-                        Broadcast Quality။</li>
-                    <li><i class="fas fa-check"></i> ✅ Art Direction: အစအဆုံး တာဝန်ယူပေးခြင်း။</li>
-                    <li><i class="fas fa-check"></i> တေးဂီတ: စိတ်ကြိုက်ဖန်တီးထားသော Sound Design။</li>
-                    <li><i class="fas fa-check"></i> Revisions: အကန့်အသတ်မရှိ (Unlimited)။</li>
+                    <li><i class="fas fa-check"></i> ရိုးရှင်း / abstract နောက်ခံများ</li>
+                    <p class="feature-group-title">Included</p>
+                    <li><i class="fas fa-check"></i> Script ရေးသားခြင်း ပါဝင်သည်</li>
+                    <li><i class="fas fa-check"></i> Stock music သာ ပါဝင်သည်</li>
+                    <li><i class="fas fa-check"></i> ပြင်ဆင်ချက် ၁ ကြိမ်</li>
                 </ul>
-                <div class="package-price">2,400,000 MMK / ၁ မိနစ်</div>
-                <span class="package-timeline"><i class="fas fa-clock"></i> ကြာချိန်: ၆ ပတ် မှ ၈ ပတ်</span>
+                <div>
+                    <div class="package-price">
+                        $200 USD <span class="mmk">800,000 MMK</span>
+                        <span class="min-note">တစ်မိနစ်လျှင် · အနည်းဆုံး ၃၀ စက္ကန့် ($100 / 400,000 MMK)</span>
+                    </div>
+                </div>
+                <span class="package-timeline"><i class="fas fa-clock"></i> Timeline: 2 – 3 Weeks / min</span>
+            </div>
+
+            <!-- Cinematic -->
+            <div class="package-card featured">
+                <div>
+                    <span class="package-badge">Most Requested</span>
+                    <h3 class="package-name">Cinematic Story</h3>
+                    <p class="package-sub">မင်္ဂလာဆောင်ဖြစ်ရပ် · ဘဝမှတ်တမ်း · ကုမ္ပဏီကြော်ငြာ</p>
+                </div>
+                <ul class="package-features">
+                    <p class="feature-group-title">Style</p>
+                    <li><i class="fas fa-check"></i> Full animation — သရုပ်ဆောင်မှု၊ စိတ်ခံစားချက်နှင့် ပတ်ဝန်းကျင်ကို
+                        အဓိကထားသည်</li>
+                    <li><i class="fas fa-check"></i> အသေးစိတ် scene နှင့် နောက်ခံများ</li>
+                    <p class="feature-group-title">Included</p>
+                    <li><i class="fas fa-check"></i> Script ရေးသားခြင်း ပါဝင်သည်</li>
+                    <li><i class="fas fa-check"></i> Licensed music + voiceover (ရွေးချယ်နိုင်သည်)</li>
+                    <li><i class="fas fa-check"></i> ပြင်ဆင်ချက် ၂ ကြိမ်</li>
+                </ul>
+                <div>
+                    <div class="package-price">
+                        $400 USD <span class="mmk">1,600,000 MMK</span>
+                        <span class="min-note">တစ်မိနစ်လျှင် · အနည်းဆုံး ၃၀ စက္ကန့် ($200 / 800,000 MMK)</span>
+                    </div>
+                </div>
+                <span class="package-timeline"><i class="fas fa-clock"></i> Timeline: 3 – 4 Weeks / min</span>
+            </div>
+
+            <!-- Premium -->
+            <div class="package-card">
+                <div>
+                    <h3 class="package-name">Premium</h3>
+                    <p class="package-sub">TV ကြော်ငြာ · အဆင့်မြင့် branding</p>
+                </div>
+                <ul class="package-features">
+                    <p class="feature-group-title">Style</p>
+                    <li><i class="fas fa-check"></i> Broadcast quality — တိကျပြောင်မြောက်သော fluid motion</li>
+                    <li><i class="fas fa-check"></i> Custom art direction နှင့် ရှုပ်ထွေးသော scene များ</li>
+                    <p class="feature-group-title">Included</p>
+                    <li><i class="fas fa-check"></i> Art direction နှင့် script ရေးသားခြင်း အပြည့်အဝ ပါဝင်သည်</li>
+                    <li><i class="fas fa-check"></i> Custom sound design</li>
+                    <li><i class="fas fa-check"></i> ပြင်ဆင်ချက် အကန့်အသတ်မရှိ</li>
+                </ul>
+                <div>
+                    <div class="package-price">
+                        $600 USD <span class="mmk">2,400,000 MMK</span>
+                        <span class="min-note">တစ်မိနစ်လျှင် · အနည်းဆုံး ၃၀ စက္ကန့် ($300 / 1,200,000 MMK)</span>
+                    </div>
+                </div>
+                <span class="package-timeline"><i class="fas fa-clock"></i> Timeline: 6 – 8 Weeks / min</span>
             </div>
         </div>
 
-        <!-- 2. Add-Ons -->
-        <h2 class="section-title">ထပ်ဆောင်း ဝန်ဆောင်မှုများ</h2>
-        <div class="addons-grid">
-            <div class="addon-box">
-                <h4><i class="fas fa-bolt"></i> Rush Delivery</h4>
-                <p>အလုပ်အမြန်လိုပါက စုစုပေါင်းဈေးနှုန်း၏ +25%။</p>
-            </div>
-            <div class="addon-box">
-                <h4><i class="fas fa-redo"></i> Extra Revision</h4>
-                <p>သတ်မှတ်ချက်ပြင်ပတွင် တစ်ကြိမ်ပြင်တိုင်း 50,000 MMK။</p>
-            </div>
-            <div class="addon-box">
-                <h4><i class="fas fa-microphone"></i> Pro Voiceover</h4>
-                <p>150,000 MMK ခန့် (အသံသရုပ်ဆောင်အပေါ် မူတည်သည်)။</p>
+        <!-- Minimum note -->
+        <div class="minimum-box">
+            <div class="m-icon"><i class="fas fa-info-circle"></i></div>
+            <div>
+                <h4>အနည်းဆုံး မှာယူမှု — ၃၀ စက္ကန့်</h4>
+                <p>Package အားလုံးတွင် အနည်းဆုံး ၃၀ စက္ကန့် ရှိသည်။ ၃၀ စက္ကန့်အောက် project များကို ၃၀
+                    စက္ကန့်နှုန်းဖြင့် တွက်ချက်သည်။ ကြာချိန်ကို ပထမ frame မှ နောက်ဆုံး frame အထိ တိုင်းတာပြီး၊ animated
+                    မဟုတ်သော title card နှင့် credit များ မပါဝင်ပါ။</p>
             </div>
         </div>
 
-        <!-- 3. Quote Factors -->
-        <div class="factors-container">
-            <h3 style="font-family: 'Fredoka', sans-serif; text-align: center; font-size: 1.8rem; margin-bottom: 2rem;">
-                ဇေးနှုန်းအပြောင်းအလဲဖြစ်နိုင်သည့် အချက်များ</h3>
-            <div class="factors-grid">
-                <div class="factor-item">
-                    <h5><i class="fas fa-video"></i> ဗီဒီယိုကြာချိန်</h5>
-                    <p>ဗီဒီယိုပိုရှည်လေ နောက်ခံနှင့် ဇာတ်ကောင်လှုပ်ရှားမှုများ ပိုမိုဆွဲရလေဖြစ်သည်။</p>
-                </div>
-                <div class="factor-item">
-                    <h5><i class="fas fa-running"></i> ရှုပ်ထွေးမှု</h5>
-                    <p>ဇာတ်ကောင်၏ သရုပ်ဆောင်ချက်၊ လှုပ်ရှားမှုအသားပေးခန်းများနှင့် ဇာတ်ကောင်အမြားစုံးများ
-                        ပိုမြားတိုင်းပါတယ်။</p>
-                </div>
-                <div class="factor-item">
-                    <h5><i class="fas fa-paint-brush"></i> Art အသေးစိတ်</h5>
-                    <p>ဇာတ်ကောင်နှင့် ပတ်ဝန်းကျင်၏ အရောင်အသွေး၊ အသေးစိတ်ဖန်တီးမှုများ။</p>
-                </div>
-                <div class="factor-item">
-                    <h5><i class="fas fa-pen-nib"></i> ဇာတ်လမ်းဖန်တီးမှု</h5>
-                    <p>အသင့်ရှိပြီးသာ Script မဟုတ်ဘဲ စိတ်ကူးသစ်တစ်ခုကို ဖန်တီးရခြင်း။</p>
-                </div>
-                <div class="factor-item">
-                    <h5><i class="fas fa-hourglass-half"></i> အချိန်သတ်မှတ်ချက်</h5>
-                    <p>သတ်မှတ်ရက် အလွန့််နီးကပ်သော ပရောဂျက်များ။</p>
-                </div>
+        <!-- ── 2. What Affects Quote ── -->
+        <h2 class="section-title"><i class="fas fa-sliders-h"
+                style="color:#ba4a4a;margin-right:10px;"></i>နောက်ဆုံးစျေးနှုန်းကို သက်ရောက်သောအချက်များ</h2>
+        <div class="factors-grid">
+            <div class="factor-card">
+                <div class="f-icon"><i class="fas fa-video"></i></div>
+                <h4>Video ကြာချိန်</h4>
+                <p>ပိုရှည်သော video တွင် နောက်ခံ၊ frame နှင့် animation အလုပ် ပိုများသည်။ စျေးနှုန်းကို ကြာချိန်နှင့်
+                    အချိုးကျ တွက်ချက်သည်။</p>
             </div>
-        </div>
-
-        <!-- 4. Workflow -->
-        <h2 class="section-title">အန်နီမေးရှင်း လုပ်ငန်းစဉ်</h2>
-        <div class="workflow-timeline">
-            <div class="step-item">
-                <div class="step-content">
-                    <h4><span class="step-num">01</span> Briefing</h4>
-                    <p>သင်၏ ရည်ရွဲချက်နှင့် စိတ်ကူးများကို ကျွန်ူပတ်နှင့် ဆွေးနွေးခြင်း။</p>
-                </div>
+            <div class="factor-card">
+                <div class="f-icon"><i class="fas fa-running"></i></div>
+                <h4>ဇာတ်ကောင်ရှုပ်ထွေးမှု</h4>
+                <p>ဇာတ်ကောင်အရေအတွက်၊ သရုပ်ဆောင်မှုရှုပ်ထွေးမှုနှင့် action scene များသည် production ကြာချိန်ကို
+                    သက်ရောက်သည်။</p>
             </div>
-            <div class="step-item">
-                <div class="step-content">
-                    <h4><span class="step-num">02</span> Script Writing</h4>
-                    <p>သင်၏ Brief အပောင်မူတည်ဖြင့် ဇာတ်ညွှန်းနှင့် စကားပြောများကို အခြောသတ်ခြင်း။</p>
-                </div>
+            <div class="factor-card">
+                <div class="f-icon"><i class="fas fa-mountain"></i></div>
+                <h4>နောက်ခံအသေးစိတ်</h4>
+                <p>ရိုးရှင်းသော flat နောက်ခံနှင့် အသေးစိတ် illustrated environment တို့ကို ကွာခြားသောစျေးနှုန်းဖြင့်
+                    တွက်ချက်သည်။</p>
             </div>
-            <div class="step-item">
-                <div class="step-content">
-                    <h4><span class="step-num">03</span> Storyboard Approval</h4>
-                    <p>အန်နီမေးရှင်းမစတင်မီ ပုံကြမ်းများကို စိးဆေးအတည်ပြုခြင်း။</p>
-                </div>
+            <div class="factor-card">
+                <div class="f-icon"><i class="fas fa-scroll"></i></div>
+                <h4>ဇာတ်လမ်းဖန်တီးမှု</h4>
+                <p>အစအဆုံး မူလဇာတ်လမ်းဖန်တီးခြင်းသည် ရှိပြီးသား script ဖြင့် လုပ်ဆောင်ခြင်းထက် ပိုမိုကြာသော
+                    စီမံကိန်းရေးဆွဲမှုကို လိုအပ်သည်။</p>
             </div>
-            <div class="step-item">
-                <div class="step-content">
-                    <h4><span class="step-num">04</span> Production</h4>
-                    <p>ပရောဖက်ရှန်ယံ အန်နီမေးရှင်းနှင့် အသောင်းများဖြင့် ဇာတ်ကောင်များကို အသက်သွင်းခြင်း။</p>
-                </div>
-            </div>
-            <div class="step-item">
-                <div class="step-content">
-                    <h4><span class="step-num">05</span> Revision</h4>
-                    <p>သတ်မှတ်ထားသော Revision စည်းကမ်းချက်များအတိုင်း အသေးစိတ်ညှိနွိင်းခြင်း။</p>
-                </div>
-            </div>
-            <div class="step-item">
-                <div class="step-content">
-                    <h4><span class="step-num">06</span> Final Delivery</h4>
-                    <p>အဆင့်မြင့် အခြောသတ်ထားသော အန်နီမေးရှင်းဗီဒီယိုကို ပေးအပ်ခြင်း။</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 5. Footer Policies -->
-        <div class="policy-grid">
-            <div class="policy-card">
-                <strong><i class="fas fa-edit"></i> Revision Policy</strong>
-                <p><strong>Sketch အဆင့်:</strong> Minor (၅) ကြိမ်၊ Major (၂) ကြိမ်။<br><strong>Animation အဆင့်:</strong>
-                    ထုတ်လုပ်မှုစတင်ပြီးပာက အရောင်နှင့် အသောင်းအနေးငျဲ ပြင်ဆင်မှုသာ ပြုလုပ်ပေးပါမည့်။</p>
-            </div>
-            <div class="policy-card">
-                <strong><i class="fas fa-wallet"></i> Payment Terms</strong>
-                <p>အလုပ်စတင်ရန် 50% စရန်ငွေ ပေးချေရမည့်ဖြစ်ပြီး၊ ဗီဒီယိုအခြောမပေးမီ ကန် 50% ကို အပြီးပေးချေရပါမည့်။</p>
-            </div>
-            <div class="policy-card">
-                <strong><i class="fas fa-info-circle"></i> Important Notes</strong>
-                <p>အချိန်အတိအကျဖြင့် အလုပ်လိုချင်ပာက ကြိုတင် Booking လုပ်ထားရန် အကြံပြုလိုပါသည်။
-                    အန်နီမေးရှင်းဖန်တီးမှုသည် အချိန်နှင့် လုပ်အား အသေချာပေးရသော စိတ်ကြိုက်ဖန်တီးမှု (Custom Work)
+            <div class="factor-card">
+                <div class="f-icon"><i class="fas fa-music"></i></div>
+                <h4>Music & Sound</h4>
+                <p>Stock music သည် Essential တွင် ပါဝင်သည်။ Licensed music နှင့် custom sound design တို့မှာ add-on
                     ဖြစ်သည်။</p>
             </div>
+            <div class="factor-card">
+                <div class="f-icon"><i class="fas fa-hourglass-half"></i></div>
+                <h4>သတ်မှတ်ရက်</h4>
+                <p>အချိန်တိုဖြင့် အရေးပေါ်ထုတ်လုပ်ရသော project များတွင် surcharge ကောက်ခံသည်။ သတ်မှတ်ရက်ရှိသော project
+                    များအတွက် ကြိုတင်မှာယူပါ။</p>
+            </div>
+        </div>
+        <div class="info-note">
+            <i class="fas fa-info-circle"></i> သင့်အကြောင်းအရာ brief ကို စစ်ဆေးပြီးမှ နောက်ဆုံးစျေးနှုန်းကို အတည်ပြုမည်။
+            မည်သည့်ငွေပေးချေမှုမမပြုမီ သင့်အိုင်ဒီယာနှင့် ဆက်သွယ်ပေးပါ — ရှင်းလင်းသောစျေးနှုန်းတစ်ခု ပေးပို့ပါမည်။
         </div>
 
-        <div class="cta-section">
-            <h2 style="font-family: 'Fredoka', sans-serif; font-size: 2rem;">စတင်ရန် အဆင့်သင့်ဖြစ်ပြီးလား?</h2>
-            <p style="color: var(--text-gray); margin-top: 10px;">BEKYOVerse သိ့် ဆက်သွဲဖြင့် သင်၏ စိတ်ကူးများကို အတူတကွ
-                စတင်အကောင်အထွိလ်ဖေါ့လိုက်ပါ။</p>
-            <a href="index.html#contact" class="cta-button">အန်နီမေးရှင်း စတင်မည့်</a>
+        <!-- ── 3. Add-Ons ── -->
+        <h2 class="section-title"><i class="fas fa-plus-circle" style="color:#ba4a4a;margin-right:10px;"></i>Add-On
+            Services</h2>
+        <table class="addons-table">
+            <thead>
+                <tr>
+                    <th>Add-On</th>
+                    <th>USD</th>
+                    <th>MMK</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ပြင်ဆင်ချက် နောက်ထပ်တစ်ကြိမ်</td>
+                    <td class="addon-price">$15</td>
+                    <td class="addon-mmk">60,000 MMK</td>
+                </tr>
+                <tr>
+                    <td>Professional Voiceover (voice actor ပေါ် မူတည်သည်)</td>
+                    <td class="addon-price">From $40</td>
+                    <td class="addon-mmk">From 160,000 MMK</td>
+                </tr>
+                <tr>
+                    <td>Licensed Music (royalty-free track)</td>
+                    <td class="addon-price">From $20</td>
+                    <td class="addon-mmk">From 80,000 MMK</td>
+                </tr>
+                <tr>
+                    <td>Custom Sound Design</td>
+                    <td class="addon-price">Custom quote</td>
+                    <td class="addon-mmk">—</td>
+                </tr>
+                <tr>
+                    <td>Format ထပ်မံ Export (ဥပမာ vertical 9:16, square)</td>
+                    <td class="addon-price">$20</td>
+                    <td class="addon-mmk">80,000 MMK</td>
+                </tr>
+                <tr>
+                    <td>Rush Delivery (timeline တစ်ဝက်လျှော့)</td>
+                    <td class="addon-price">+50%</td>
+                    <td class="addon-mmk">စုစုပေါင်းစျေးနှုန်း၏</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- ── 4. Workflow ── -->
+        <h2 class="section-title"><i class="fas fa-route" style="color:#ba4a4a;margin-right:10px;"></i>Animation
+            Workflow</h2>
+        <div class="workflow-grid">
+            <div class="workflow-step" data-num="01">
+                <h4><i class="fas fa-comments step-icon"></i>Brief &amp; Vision</h4>
+                <p>သင့်အိုင်ဒီယာ၊ ရည်ရွယ်ချက်၊ ပစ်မှတ်ပရိသတ်နှင့် reference များ ပြောပြပါ။ Brief ရှင်းလင်းလေ ရလဒ်
+                    ပိုကောင်းလေ ဖြစ်သည်။</p>
+            </div>
+            <div class="workflow-step" data-num="02">
+                <h4><i class="fas fa-calculator step-icon"></i>Quote &amp; Duration</h4>
+                <p>Package၊ စုစုပေါင်းကြာချိန်နှင့် နောက်ဆုံးစျေးနှုန်းကို အတည်ပြုသည်။ မည်သည့်ငွေပေးချေမှုမပြုမီ
+                    အရာအားလုံးကို သဘောတူသည်။</p>
+            </div>
+            <div class="workflow-step" data-num="03">
+                <h4><i class="fas fa-wallet step-icon"></i>Deposit Payment</h4>
+                <p>အလုပ်မစမီ 50% deposit ပေးချေသည်။ ငွေပေးချေမှု အတည်ပြုပြီးမှ အလုပ်စတင်သည်။</p>
+                <span class="deposit-tag">50% Deposit</span>
+            </div>
+            <div class="workflow-step" data-num="04">
+                <h4><i class="fas fa-scroll step-icon"></i>Script Writing</h4>
+                <p>သင့် brief အပေါ်အခြေခံ၍ script ကို ဇာတ်ကြောင်း၊ dialog နှင့် scene ခွဲခြမ်းစိတ်ဖြာမှုဖြင့် ချမှတ်သည်။
+                    ရှေ့ဆက်မတိုင်မီ သင် စစ်ဆေးပြီး အတည်ပြုရမည်။</p>
+            </div>
+            <div class="workflow-step" data-num="05">
+                <h4><i class="fas fa-border-all step-icon"></i>Storyboard</h4>
+                <p>Scene တစ်ခုချင်းစီ၏ visual plan ကို အတည်ပြုရန် မျှဝေသည်။ ဆောင်ပုဒ်နှင့် ဇာတ်လမ်းအပြောင်းအလဲများကို
+                    ဤနေရာတွင်သာ ပြုလုပ်ရမည်။</p>
+            </div>
+            <div class="workflow-step" data-num="06">
+                <h4><i class="fas fa-paint-brush step-icon"></i>Character &amp; Background Art</h4>
+                <p>Animation မစတင်မီ ဇာတ်ကောင်နှင့် နောက်ခံများအားလုံးကို ပုံဆွဲပြီး အတည်ပြုသည်။</p>
+            </div>
+            <div class="workflow-step" data-num="07">
+                <h4><i class="fas fa-film step-icon"></i>Animation Production</h4>
+                <p>ဇာတ်ကောင်များကို frame တစ်ချပ်ချင်းစီ animate လုပ်သည်။ ဤအဆင့်မှာ အချိန်အများဆုံး ကြာသောကာလဖြစ်ပြီး —
+                    ဤနောက် အဓိကပြောင်းလဲမှုများ မပြုနိုင်တော့ပါ။</p>
+            </div>
+            <div class="workflow-step" data-num="08">
+                <h4><i class="fas fa-music step-icon"></i>Sound &amp; Music</h4>
+                <p>Music၊ sound effect နှင့် voiceover (ပါဝင်ပါက) တို့ကို animation နှင့် sync ချပြီး mix လုပ်သည်။</p>
+            </div>
+            <div class="workflow-step" data-num="09">
+                <h4><i class="fas fa-sync-alt step-icon"></i>Revision</h4>
+                <p>သင့် package တွင် ပါဝင်သော revision round အတွင်း နောက်ဆုံးစစ်ဆေးမှု ပြုလုပ်သည်။ ဤအဆင့်တွင်
+                    အရောင်နှင့် အသံ ချိန်ညှိမှုများသာ ဆောင်ရွက်နိုင်သည်။</p>
+            </div>
+            <div class="workflow-step" data-num="10">
+                <h4><i class="fas fa-check-circle step-icon"></i>Final Payment &amp; Delivery</h4>
+                <p>ကျန် 50% ပေးချေပြီးနောက် MP4 (H.264) ဖော်မတ်ဖြင့် Google Drive သို့မဟုတ် WeTransfer မှတဆင့် နောက်ဆုံး
+                    video ပေးပို့သည်။</p>
+                <span class="deposit-tag">50% Final</span>
+            </div>
         </div>
+        <div class="info-note">
+            <i class="fas fa-info-circle"></i> Animation production သည် ကြာသောလုပ်ငန်းစဉ်တစ်ခုဖြစ်သည်။ သတ်မှတ်ရက်ရှိသော
+            project များအတွက် <strong>ကြိုတင်မှာယူရန် အကြံပြုသည်</strong>။ Animation production စတင်ပြီးသည်နှင့်
+            structural ပြောင်းလဲမှုများ မပြုနိုင်တော့ပါ။
+        </div>
+
+        <!-- ── 5. Revision Policy ── -->
+        <h2 class="section-title"><i class="fas fa-edit" style="color:#ba4a4a;margin-right:10px;"></i>Revision Policy
+        </h2>
+        <table class="revision-table">
+            <thead>
+                <tr>
+                    <th>အဆင့်</th>
+                    <th>ခွင့်ပြုချက်</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="stage">Script</td>
+                    <td>Dialog၊ tone နှင့် ဇာတ်ကြောင်းပြောင်းလဲမှုများ။ အတည်ပြုမတိုင်မီ ကန့်သတ်မှုမရှိ — storyboard သို့
+                        မတိုင်မီ သေချာစွာ အတည်ပြုပါ။</td>
+                </tr>
+                <tr>
+                    <td class="stage">Storyboard</td>
+                    <td>Scene ဖွဲ့စည်းမှု၊ flow နှင့် pace ပြောင်းလဲမှုများ။ သေးငယ်သောပြောင်းလဲမှု: ၅ ကြိမ်အထိ။
+                        အဓိကဦးတည်ချက်ပြောင်းမှု: ၂ ကြိမ်အထိ (ထို့ကျော်ပါက redraw fee ကောက်သည်)။</td>
+                </tr>
+                <tr>
+                    <td class="stage">Character &amp; Background Art</td>
+                    <td>အရောင်နှင့် သေးငယ်သောအသေးစိတ်ချိန်ညှိမှုများသာ။ art အတည်ပြုပြီးနောက် ပြန်ဒီဇိုင်းဆွဲမှု
+                        မပြုနိုင်ပါ။</td>
+                </tr>
+                <tr>
+                    <td class="stage">Animation Production</td>
+                    <td>Structural ပြောင်းလဲမှု မပြုနိုင်ပါ။ Timing နှင့် speed ချိန်ညှိမှုများသာ ဆောင်ရွက်နိုင်သည်။
+                    </td>
+                </tr>
+                <tr>
+                    <td class="stage">Sound &amp; Music</td>
+                    <td>အသံပမာဏ၊ music track ပြောင်းလဲမှု (budget အတွင်း)၊ voiceover line ပြင်ဆင်မှုများသာ
+                        ဆောင်ရွက်နိုင်သည်။</td>
+                </tr>
+                <tr>
+                    <td class="stage">Final Review</td>
+                    <td>အရောင်ပြင်ဆင်မှုနှင့် အသံပမာဏချိန်ညှိမှုများသာ ဆောင်ရွက်နိုင်သည်။ နောက်ဆုံးအတည်ပြုပြီးနောက်
+                        scene ပြောင်းလဲမှု မပြုနိုင်ပါ။</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="info-note">
+            <i class="fas fa-info-circle"></i> ထပ်တိုးပြင်ဆင်ချက်တစ်ကြိမ်လျှင် $15 / 60,000 MMK ဖြစ်သည်။ Animation
+            production စတင်ပြီးသည်နှင့် အဓိကပြောင်းလဲမှုများ မပြုနိုင်တော့ပါ — ထို့ကြောင့် storyboard အတည်ပြုမှုသည်
+            အရေးကြီးဆုံးအဆင့်ဖြစ်သည်။
+        </div>
+
+        <!-- ── 6. Payment Terms ── -->
+        <h2 class="section-title"><i class="fas fa-wallet" style="color:#ba4a4a;margin-right:10px;"></i>Payment Terms
+        </h2>
+        <div class="policy-grid">
+            <div class="policy-card">
+                <strong><i class="fas fa-percentage"></i> Payment Schedule</strong>
+                <ul>
+                    <li>အလုပ်မစမီ 50% deposit ပေးချေရမည်</li>
+                    <li>Video မထုတ်မပေးမီ 50% နောက်ဆုံးငွေပေးချေရမည်</li>
+                    <li>ရှည်လျားသော project (၃ မိနစ်အထက်) တွင် milestone ငွေပေးချေမှုကို ကြိုတင်ဆွေးနွေးနိုင်သည်</li>
+                    <li>Script ရေးသားပြီးသည်နှင့် deposit သည် <strong style="color:#fff;">ပြန်မအမ်း</strong></li>
+                </ul>
+            </div>
+            <div class="policy-card">
+                <strong><i class="fas fa-credit-card"></i> လက်ခံသောနည်းလမ်းများ</strong>
+                <ul>
+                    <li>KPay / Wave Pay</li>
+                    <li>Bank Transfer (မြန်မာ)</li>
+                    <li>PayPal / Wise (နိုင်ငံတကာ)</li>
+                </ul>
+            </div>
+            <div class="policy-card">
+                <strong><i class="fas fa-file-contract"></i> Cancellation Policy</strong>
+                <ul>
+                    <li>Script မရေးမီ ဖျက်သိမ်းပါက: ငွေအပြည့်ပြန်အမ်းသည်</li>
+                    <li>Script အတည်ပြုပြီးနောက် ဖျက်သိမ်းပါက: deposit ဆုံးရှုံးသည်</li>
+                    <li>Production အကြားဖျက်သိမ်းပါက: ထိုအဆင့်အထိ ပြုလုပ်ပြီးသောအလုပ်ပေးပို့မည်၊
+                        ပြုလုပ်ပြီးသောအလုပ်အတွက် ငွေပြန်မအမ်းပါ</li>
+                </ul>
+            </div>
+            <div class="policy-card">
+                <strong><i class="fas fa-shield-alt"></i> Rights &amp; Ownership</strong>
+                <ul>
+                    <li>နောက်ဆုံးငွေပေးချေပြီးသည်နှင့် commercial rights အပြည့်အဝ လွှဲပြောင်းသည်</li>
+                    <li>Portfolio display rights ကို BEKYOVerse သိမ်းဆည်းသည်</li>
+                    <li>လျှို့ဝှက်ရန် private/NDA project ကို တောင်းခံနိုင်သည်</li>
+                    <li>Music rights သည် ရွေးချယ်သော license အမျိုးအစားပေါ် မူတည်သည်</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ── 7. FAQ ── -->
+        <h2 class="section-title"><i class="fas fa-question-circle"
+                style="color:#ba4a4a;margin-right:10px;"></i>Frequently Asked Questions</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    အနည်းဆုံး မှာယူမှုမှာ ဘယ်လောက်လဲ?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">အနည်းဆုံး ၃၀ စက္ကန့် ဖြစ်သည်။ ၃၀ စက္ကန့်အောက် project များကို ၃၀
+                    စက္ကန့်နှုန်းဖြင့် တွက်ချက်သည်။ ဥပမာ၊ ၁၅ စက္ကန့်သာ Essential Story ကို $100 / 400,000 MMK (၃၀
+                    စက္ကန့် minimum) ဖြင့် ကောက်ခံသည်။</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Script ကိုယ်တိုင် ရေးသွင်းရမလား?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">မလိုပါ။ Script ရေးသားခြင်းသည် package အားလုံးတွင် ပါဝင်သည်။ သင့်အိုင်ဒီယာ၊
+                    ဇာတ်လမ်း သို့မဟုတ် message ကိုသာ ပြောပြပါ — animation အတွက် script ကို ကျွန်တော်ဖန်တီးပေးမည်။ Script
+                    ရှိပြီးသားဆိုပါကလည်း visual storytelling အတွက် ပြန်လည်ဖန်တီးပေးမည်။</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    ဘယ် package ကို ရွေးသင့်သလဲ?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">Essential Story သည် ရိုးရှင်းသောရှင်းပြချက်၊ social media content နှင့် cute
+                    loop များအတွက် ကောင်းသည်။ Cinematic Story သည် ခံစားချက်ပြင်းသော ဇာတ်လမ်းများ — မင်္ဂလာဆောင်၊ brand
+                    story၊ နက်နဲသောကြော်ငြာများအတွက် ကောင်းသည်။ Premium သည် အရည်အသွေးကို ဦးစားပေးသော broadcast-level
+                    ကြော်ငြာများအတွက် ဖြစ်သည်။ မသေချာပါကလည်း သင့်အိုင်ဒီယာနှင့် ဆက်သွယ်ပါ — သင့်တော်သော package ကို
+                    အကြံပြုပေးမည်။</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Animation production အတောအတွင်း ဘာကြောင့် ပြောင်းလဲ၍မရတာလဲ?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">Animation ကို frame တစ်ချပ်ချင်းစီ တည်ဆောက်သည်။ Scene တစ်ခု animate ပြီးသည်နှင့်
+                    ဇာတ်ကောင်နေရာ၊ ဖွဲ့စည်းမှု သို့မဟုတ် ဇာတ်လမ်း flow ပြောင်းလဲမှုသည် ထို frame များအားလုံးကို အစကနဦး
+                    ပြန်လုပ်ရသောလုပ်ငန်းဖြစ်သည်။ ထို့ကြောင့် storyboard အတည်ပြုမှုသည် အရေးကြီးဆုံးအဆင့်ဖြစ်ပြီး —
+                    production မစမီ အဓိကဆုံးဖြတ်ချက်များ အားလုံး အတည်ပြုထားရမည်။</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    နောက်ဆုံး video ကို ဘယ် format နဲ့ ရမလဲ?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">Brief တွင် သဘောတူထားသော resolution နှင့် aspect ratio ဖြင့် MP4 (H.264) ဖော်မတ်
+                    ဖြစ်သည်။ Standard မှာ 1920×1080 (16:9) ဖြစ်သည်။ Social media အတွက် Vertical (9:16) နှင့် Square
+                    (1:1) တို့ကို add-on အဖြစ် ရနိုင်သည်။</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Animation ကို commercial ရည်ရွယ်ချက်ဖြင့် သုံးနိုင်မလား?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">ဟုတ်ကဲ့။ နောက်ဆုံးငွေပေးချေပြီးသည်နှင့် commercial rights အပြည့်အဝ
+                    လွှဲပြောင်းသည်။ ကြော်ငြာ၊ social media၊ TV၊ presentation နှင့် commercial ရည်ရွယ်ချက်မှန်သမျှအတွက်
+                    animation ကို အသုံးပြုနိုင်သည်။ မှတ်ချက်: music rights သည် ရွေးချယ်သော license အမျိုးအစားပေါ်
+                    မူတည်သည်။</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    ဘယ်လောက်ကြိုတင်မှာယူသင့်သလဲ?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">Animation သည် အချိန်ယူသည် — package ပေါ်မူတည်၍ တစ်မိနစ်လျှင် ၂ မှ ၈ ပတ်အထိ
+                    ကြာသည်။ သတ်မှတ်ရက်ကန့်သတ်ချက်ရှိသော project (ပွဲများ၊ ကုန်ပစ္စည်းမိတ်ဆက်ပွဲ၊ campaign) အတွက်
+                    အနည်းဆုံး ၄-၆ ပတ် ကြိုတင်မှာယူပါ။ Rush delivery ကို +50% surcharge ဖြင့် ရရှိနိုင်သော်လည်း schedule
+                    availability ပေါ်တွင် မူတည်သည်။</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    နိုင်ငံတကာ client များနှင့် လုပ်ဆောင်နိုင်မလား?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">ဟုတ်ကဲ့။ နိုင်ငံတကာ client များအတွက် PayPal သို့မဟုတ် Wise မှတဆင့်
+                    ငွေပေးချေနိုင်သည်။ ဆက်သွယ်ရေးကို အင်္ဂလိပ်ဘာသာဖြင့် ဆောင်ရွက်သည်။ နောက်ဆုံး video ကို Google Drive
+                    သို့မဟုတ် WeTransfer မှတဆင့် ပေးပို့သည်။</div>
+            </div>
+        </div>
+
+        <!-- ── CTA ── -->
+        <div class="cta-section">
+            <h2 style="font-family:'Fredoka',sans-serif;font-size:2rem;">သင့်ဇာတ်လမ်းကို အသက်သွင်းဖန်တီးရန်
+                အသင့်ဖြစ်ပြီလား?</h2>
+            <p style="color:rgba(255,255,255,0.5);margin-top:10px;">သင့်အိုင်ဒီယာပြောပြပါ — ကျန်တာကို
+                ကျွန်တော်ဆောင်ရွက်ပေးမည်။</p>
+            <a href="index.html#contact" class="cta-button" style="display:inline-block;margin-top:1.5rem;">Start My
+                Animation</a>
+        </div>
+
     </div>
 
-    <footer>
-        <p>&copy; 2025 BEKYOVerse. အခွင့်အရာများ သံသံဝံဝံရှိပါသည်။</p>
+    <footer class="footer">
+        <p>&copy; 2025 BEKYOVerse. All rights reserved.</p>
+        <a href="#" class="back-to-top">Back to Top ↑</a>
     </footer>
+
     <script src="main.js"></script>
     <div id="copyToast" class="copy-toast">Email copied ✓</div>
     <a href="https://m.me/bekyoverse" class="messenger-floating" target="_blank" title="Message me on Messenger">
         <i class="fab fa-facebook-messenger"></i>
     </a>
+
+    <script>
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
+    </script>
 </body>
 
 </html>
