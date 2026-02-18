@@ -135,4 +135,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // 8. Messenger Auto-Show Tooltip Logic
+    // ------------------------------------
+    const messengerIcon = document.querySelector('.messenger-floating');
+    if (messengerIcon) {
+        // Wait 3 seconds, then show tooltip
+        setTimeout(() => {
+            messengerIcon.classList.add('auto-show');
+
+            // Wait 5 more seconds (total 8 from load), then hide it
+            setTimeout(() => {
+                messengerIcon.classList.remove('auto-show');
+            }, 5000);
+
+        }, 3000);
+    }
+
 });
