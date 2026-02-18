@@ -435,6 +435,68 @@ nav a:hover {
     box-shadow: 0 15px 40px var(--primary-red-glow);
 }
 
+.messenger-tooltip {
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--white);
+    background: #fff;
+    color: var(--primary-red);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateY(-50%) translateX(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.messenger-floating:hover .messenger-tooltip,
+.messenger-floating.show-tooltip .messenger-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* Always show tooltip on load for a few seconds then hide? or always check? */
+/* User asked for "add contact me small bubble text beside floating messenger icon" */
+/* Usually this implies it's visible. */
+.messenger-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+    animation: floatTooltip 3s ease-in-out infinite;
+}
+
+@keyframes floatTooltip {
+
+    0%,
+    100% {
+        transform: translateY(-50%) translateX(0);
+    }
+
+    50% {
+        transform: translateY(-50%) translateX(-5px);
+    }
+}
+
+.messenger-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 7px solid #fff;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+}
+
 .copy-toast {
     position: fixed;
     bottom: 100px;
