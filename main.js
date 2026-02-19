@@ -87,29 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. Language Switcher Logic (Pricing Pages)
-    // ------------------------------------------
-    const langButtons = document.querySelectorAll('.lang-btn');
-    if (langButtons.length > 0) {
-        const currentLang = localStorage.getItem('language') || 'en';
 
-        langButtons.forEach(btn => {
-            if (btn.dataset.lang === currentLang) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
-
-        langButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const selectedLang = btn.dataset.lang;
-                localStorage.setItem('language', selectedLang);
-                langButtons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-            });
-        });
-    }
 
     // 6. 3D Head Interactivity removed — CSS float animation kept
 
